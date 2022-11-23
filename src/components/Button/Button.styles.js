@@ -20,6 +20,7 @@ const Button = styled.button`
   color: var(--color-first-white);
   cursor: var(--cursor-pointer);
   background-color: transparent;
+  text-decoration: none;
 
   &::before {
     content: '';

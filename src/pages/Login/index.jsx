@@ -2,9 +2,7 @@ import Login from './Login'
 import useLogin from './useLogin'
 
 export default () => {
-  const { statusConnectWalletMenu, toggleConnectWalletMenu } = useLogin()
+  const { connectWallet } = useLogin()
 
-  return <Login
-            statusConnectWalletMenu={statusConnectWalletMenu}
-            toggleConnectWalletMenu={toggleConnectWalletMenu} />
+  return <Login connectWallet={connectWallet} />
 }

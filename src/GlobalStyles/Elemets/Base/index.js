@@ -10,7 +10,7 @@ const Base = createGlobalStyle`
   }
 
   body {
-    font-family: 'Press Start 2P', cursive;
+    font-family: var(--pressStart);
     background-color: var(--color-second-black);
     color: var(--color-first-white)
   }

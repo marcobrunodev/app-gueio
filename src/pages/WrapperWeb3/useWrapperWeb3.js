@@ -1,22 +1,26 @@
-import { configureChains, defaultChains, createClient } from 'wagmi'
+import { configureChains, defaultChains, createClient, chain } from 'wagmi'
 import { infuraProvider } from 'wagmi/providers/infura'
 import { publicProvider } from 'wagmi/providers/public'
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+import { EthereumClient, modalConnectors } from '@web3modal/ethereum'
 
-const { INFURA_API_KEY } = import.meta.env
+const { VITE_INFURA_API_KEY, VITE_CHAIN } = import.meta.env
 
 const useWrapperWeb3 = () => {
-  const { chains, provider, webSocketProvider } = configureChains(defaultChains, [infuraProvider({ apiKey: INFURA_API_KEY }), publicProvider()])
+  const { provider, webSocketProvider } = configureChains(defaultChains, [infuraProvider({ apiKey: VITE_INFURA_API_KEY }), publicProvider()])
+  const chains = [chain[VITE_CHAIN]]
 
-  const client = createClient({
+  const wagmiClient = createClient({
     autoConnect: true,
-    connectors: [new MetaMaskConnector(chains)],
+    connectors: modalConnectors({ appName: 'web3modal', chains }),
     provider,
     webSocketProvider
   })
 
+  const ethereumClient = new EthereumClient(wagmiClient, chains)
+
   return {
-    client
+    wagmiClient,
+    ethereumClient
   }
 }
 

@@ -7,11 +7,14 @@ const Buttons = styled.div`
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  width: 100%;
+  max-width: 40rem;
 `
 
 const Login = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100vh;
 
   ${Title} {

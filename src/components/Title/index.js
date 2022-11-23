@@ -5,7 +5,9 @@ const hasCenter = ({ center }) => center && css`
 `
 
 const Title = styled.h1`
-  font-size: 2.4rem;
+  font-size: 3.2rem;
+  font-family: var(--silkscreen);
+  font-weight: bold;
 
   ${hasCenter};
 `
