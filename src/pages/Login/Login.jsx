@@ -1,4 +1,4 @@
-import { func } from 'prop-types'
+import { func, string } from 'prop-types'
 import Button from '../../components/Button'
 import Logo from '../../components/Logo'
 import Title from '../../components/Title'
@@ -6,7 +6,7 @@ import S from './Login.styles'
 
 const { VITE_DISCORD_OAUTH2_URL } = import.meta.env
 
-const Login = ({ connectWallet }) => (
+const Login = ({ connectWallet, discordState }) => (
   <S.Login>
     <Logo center />
 
@@ -15,7 +15,7 @@ const Login = ({ connectWallet }) => (
     <S.Buttons>
       <Button onClick={connectWallet}>WalletConnect</Button>
       <Button>Twitter</Button>
-      <Button as="a" href={VITE_DISCORD_OAUTH2_URL}>Discord</Button>
+      <Button as="a" href={`${VITE_DISCORD_OAUTH2_URL}&state=${discordState}`}>Discord</Button>
       <Button>Twitch</Button>
       <Button>Email</Button>
     </S.Buttons>
@@ -23,7 +23,8 @@ const Login = ({ connectWallet }) => (
 )
 
 Login.propTypes = {
-  connectWallet: func.isRequired
+  connectWallet: func.isRequired,
+  discordState: string.isRequired
 }
 
 export default Login

@@ -8,7 +8,7 @@
       "methods": [
         "get"
       ],
-      "route": "auth/discord"
+      "route": "users/discord/{id}"
     },
     {
       "type": "http",
@@ -17,12 +17,12 @@
     },
     {
       "type": "cosmosDB",
-      "direction": "out",
-      "name": "outputUsers",
+      "direction": "in",
+      "name": "inputUsers",
       "databaseName": "gueio",
       "collectionName": "users",
-      "createIfNotExists": true,
-      "connectionStringSetting": "AzureWebJobsStorage"
+      "connectionStringSetting": "AzureWebJobsStorage",
+      "sqlQuery": "SELECT c.id, c.discord FROM c WHERE c.discord.id={id}"
     }
   ]
 }

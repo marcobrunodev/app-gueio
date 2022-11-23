@@ -25,7 +25,7 @@ const Logo = styled.figure`
   background-size: auto var(--size);
   image-rendering: pixelated;
   cursor: pointer;
-  animation: ${run} 2.3s steps(36) paused infinite;
+  animation: ${run} 2.8s steps(36) paused infinite;
   cursor: var(--cursor-pointer);
 
   &:hover {

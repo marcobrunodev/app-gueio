@@ -1,10 +1,12 @@
 const { request } = require('undici')
 
 const {
+  DISCORD_API_URL,
   DISCORD_CLIENT_ID,
   DISCORD_SECRETY_ID,
   DISCORD_REDIRECT_URI,
-  DISCORD_SCOPE
+  DISCORD_SCOPE,
+  API_URL
 } = process.env
 
 module.exports = async (context, req) => {
@@ -26,14 +28,37 @@ module.exports = async (context, req) => {
       }
     }
 
-    console.log('reidrect_uri', DISCORD_REDIRECT_URI)
-
     try {
-      const tokenResponseData = await request('https://discord.com/api/oauth2/token', config)
+      const tokenResponseData = await request(`${DISCORD_API_URL}/oauth2/token`, config)
       const authData = await tokenResponseData.body.json()
 
       if (authData.error) throw authData
 
+      const userResponse = await request(`${DISCORD_API_URL}/users/@me`, {
+        headers: {
+          Authorization: `${authData.token_type} ${authData.access_token}`
+        }
+      })
+      const user = await userResponse.body.json()
+      context.log('user', user)
+      context.log('API_URL', API_URL)
+      const userDBResponse = await request(`${API_URL}/users/discord/${user.id}`)
+      const userDB = await userDBResponse.body.json()
+      context.log('userDB', userDB.user)
+
+      context.bindings.outputUsers = {
+        id: userDB.user?.id,
+        discord: {
+          id: user.id,
+          username: user.username,
+          avatar: user.avatar,
+          banner: user.banner,
+          bannerColor: user.banner_color,
+          accentColor: user.accent_color
+        }
+      }
+
+      context.log('SUCCESS - AuthDiscord', user)
       return {
         status: 302,
         headers: {
@@ -41,23 +66,22 @@ module.exports = async (context, req) => {
         }
       }
     } catch (error) {
-      console.log(error)
+      context.log(`ERROR - AuthDiscord - ${error}`)
 
       return {
-        status: 400,
-        body: {
-          status: 400,
-          message: error
+        status: 302,
+        headers: {
+          location: '/login'
         }
       }
     }
   }
 
+  context.log('ERROR - AuthDiscord - No code')
   return {
-    status: 400,
-    body: {
-      status: 400,
-      message: 'No code'
+    status: 302,
+    headers: {
+      location: '/login'
     }
   }
 }
