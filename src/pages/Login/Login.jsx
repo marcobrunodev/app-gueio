@@ -14,9 +14,9 @@ const Login = ({ connectWallet }) => (
 
     <S.Buttons>
       <Button onClick={connectWallet}>WalletConnect</Button>
+      <Button>Twitter</Button>
       <Button as="a" href={VITE_DISCORD_OAUTH2_URL}>Discord</Button>
       <Button>Twitch</Button>
-      <Button>Twitter</Button>
       <Button>Email</Button>
     </S.Buttons>
   </S.Login>
