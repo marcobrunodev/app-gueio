@@ -40,11 +40,8 @@ module.exports = async (context, req) => {
         }
       })
       const user = await userResponse.body.json()
-      context.log('user', user)
-      context.log('API_URL', API_URL)
       const userDBResponse = await request(`${API_URL}/users/discord/${user.id}`)
       const userDB = await userDBResponse.body.json()
-      context.log('userDB', userDB.user)
 
       context.bindings.outputUsers = {
         id: userDB.user?.id,
