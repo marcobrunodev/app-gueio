@@ -14,10 +14,7 @@ const Login = ({ connectWallet, discordState }) => (
 
     <S.Buttons>
       <Button onClick={connectWallet}>WalletConnect</Button>
-      <Button>Twitter</Button>
       <Button as="a" href={`${VITE_DISCORD_OAUTH2_URL}&state=${discordState}`}>Discord</Button>
-      <Button>Twitch</Button>
-      <Button>Email</Button>
     </S.Buttons>
   </S.Login>
 )
