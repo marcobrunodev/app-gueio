@@ -10,7 +10,7 @@ const useLogin = () => {
 
   useEffect(() => {
     if (isConnected) {
-      navigate('/dashboard')
+      navigate('/@me')
     }
   }, [isConnected])
 

@@ -1,12 +1,12 @@
 import { func } from 'prop-types'
 import Button from '../Button'
 
-const LogoButton = ({ onClick }) => (
+const LogoutButton = ({ onClick }) => (
   <Button onClick={onClick}>Logout</Button>
 )
 
-LogoButton.propTypes = {
+LogoutButton.propTypes = {
   onClick: func.isRequired
 }
 
-export default LogoButton
+export default LogoutButton

@@ -6,7 +6,7 @@ const run = keyframes`
     background-position: 0 0;
   }
   to {
-    background-position: calc(20rem * -36) 0;
+    background-position: calc(var(--size) * -36) 0;
   }
 `
 

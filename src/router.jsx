@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Login from './pages/Login'
 import WrapperWeb3 from './pages/WrapperWeb3/index.jsx'
-import Dashboard from './pages/Dashboard'
+import Me from './pages/Me'
 import RequiredAuth from './pages/RequiredAuth'
 import loaderRequireAuth from './pages/RequiredAuth/loaderRequiredAuth'
 
@@ -17,11 +17,11 @@ const router = createBrowserRouter([{
     element: <Login />
   },
   {
-    path: 'dashboard',
+    path: '@:me',
     loader: loaderRequireAuth,
     element: (
       <RequiredAuth>
-        <Dashboard />
+        <Me />
       </RequiredAuth>
     )
   }]
