@@ -62,7 +62,7 @@ module.exports = async (context, req) => {
       return {
         status: 302,
         headers: {
-          location: '/dashboard'
+          location: '/@me'
         },
         cookies: [{
           name: 'discordTokenType',
