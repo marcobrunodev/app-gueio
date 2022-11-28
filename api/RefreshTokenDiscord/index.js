@@ -8,8 +8,12 @@ module.exports = async (context, req) => {
     const cookies = req.headers.cookie
     const token = getCookie(cookies, 'discordToken')
 
+    context.log('RefreshTokenDiscord token', token)
+
     const responseRefreshToken = await request(`${API_URL}/auth/discord/refresh/${token}`)
     const newToken = await responseRefreshToken.body.json()
+
+    context.log('newToken', newToken)
 
     return {
       status: 200,
