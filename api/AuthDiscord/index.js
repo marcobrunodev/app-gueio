@@ -51,7 +51,10 @@ module.exports = async (context, req) => {
           avatar: user.avatar,
           banner: user.banner,
           bannerColor: user.banner_color,
-          accentColor: user.accent_color
+          accentColor: user.accent_color,
+          token: authData.access_token,
+          refreshToken: authData.refresh_token,
+          scope: authData.scope
         }
       }
 
@@ -60,7 +63,23 @@ module.exports = async (context, req) => {
         status: 302,
         headers: {
           location: '/dashboard'
-        }
+        },
+        cookies: [{
+          name: 'discordTokenType',
+          value: `${authData.token_type}`,
+          path: '/',
+          sameSite: 'Strict',
+          secure: true,
+          httpOnly: true
+        },
+        {
+          name: 'discordToken',
+          value: `${authData.access_token}`,
+          path: '/',
+          sameSite: 'Strict',
+          secure: true,
+          httpOnly: true
+        }]
       }
     } catch (error) {
       context.log(`ERROR - AuthDiscord - ${error}`)

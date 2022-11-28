@@ -12,7 +12,7 @@ const useLogin = () => {
     if (isConnected) {
       navigate('/dashboard')
     }
-  }, [address])
+  }, [isConnected])
 
   const connectWallet = () => {
     if (!isOpen && !address) {
@@ -20,15 +20,16 @@ const useLogin = () => {
     }
   }
 
-  function generateRandomString () {
-    let randomString = ''
-    const randomNumber = Math.floor(Math.random() * 10)
+  function generateRandomString (length = 33) {
+    let result = ''
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    const charactersLength = characters.length
 
-    for (let i = 0; i < 20 + randomNumber; i++) {
-      randomString += String.fromCharCode(33 + Math.floor(Math.random() * 94))
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength))
     }
 
-    return randomString
+    return result
   }
 
   return {

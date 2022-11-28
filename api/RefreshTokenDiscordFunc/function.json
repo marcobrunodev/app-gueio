@@ -1,19 +1,28 @@
 {
   "bindings": [
     {
-      "authLevel": "anonymous",
+      "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
       "methods": [
-        "post"
+        "get"
       ],
-      "route": "auth/eth/{address}"
+      "route": "auth/discord/refresh/{token}"
     },
     {
       "type": "http",
       "direction": "out",
       "name": "$return"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "inputUsers",
+      "databaseName": "gueio",
+      "collectionName": "users",
+      "connectionStringSetting": "AzureWebJobsStorage",
+      "sqlQuery": "SELECT c.id, c.discord FROM c WHERE c.discord.token={token}"
     },
     {
       "type": "cosmosDB",
@@ -23,15 +32,6 @@
       "collectionName": "users",
       "createIfNotExists": true,
       "connectionStringSetting": "AzureWebJobsStorage"
-    },
-    {
-      "type": "cosmosDB",
-      "direction": "in",
-      "name": "inputUsers",
-      "databaseName": "gueio",
-      "collectionName": "users",
-      "connectionStringSetting": "AzureWebJobsStorage",
-      "sqlQuery": "SELECT * FROM c WHERE c.eth.address={address}"
     }
   ]
 }

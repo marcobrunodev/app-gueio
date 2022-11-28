@@ -1,12 +1,13 @@
 import { node } from 'prop-types'
-import { Navigate, useLocation } from 'react-router-dom'
-import useAuth from '../../hooks/useAuth'
+import { Navigate, useLoaderData, useLocation } from 'react-router-dom'
+import { useAccount } from 'wagmi'
 
 const RequiredAuth = ({ children }) => {
-  const { authorized } = useAuth()
+  const { isConnected } = useAccount()
+  const discord = useLoaderData()
   const location = useLocation()
 
-  return authorized ? children : <Navigate to="/" state={{ from: location }} replace />
+  return isConnected || discord.authorized ? children : <Navigate to="/" state={{ from: location }} replace />
 }
 
 RequiredAuth.propTypes = {

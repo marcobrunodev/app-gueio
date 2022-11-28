@@ -3,6 +3,7 @@ import Login from './pages/Login'
 import WrapperWeb3 from './pages/WrapperWeb3/index.jsx'
 import Dashboard from './pages/Dashboard'
 import RequiredAuth from './pages/RequiredAuth'
+import loaderRequireAuth from './pages/RequiredAuth/loaderRequiredAuth'
 
 const router = createBrowserRouter([{
   path: '/',
@@ -17,7 +18,12 @@ const router = createBrowserRouter([{
   },
   {
     path: 'dashboard',
-    element: <RequiredAuth><Dashboard /></RequiredAuth>
+    loader: loaderRequireAuth,
+    element: (
+      <RequiredAuth>
+        <Dashboard />
+      </RequiredAuth>
+    )
   }]
 }])
 
