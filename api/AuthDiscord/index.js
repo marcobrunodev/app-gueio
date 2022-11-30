@@ -48,6 +48,7 @@ module.exports = async (context, req) => {
         discord: {
           id: user.id,
           username: user.username,
+          discriminator: user.discriminator,
           avatar: user.avatar,
           banner: user.banner,
           bannerColor: user.banner_color,

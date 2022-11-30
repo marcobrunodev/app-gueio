@@ -13,8 +13,6 @@ module.exports = async (context, req) => {
     const responseRefreshToken = await request(`${API_URL}/auth/discord/refresh/${token}`)
     const newToken = await responseRefreshToken.body.json()
 
-    context.log('newToken', newToken)
-
     return {
       status: 200,
       body: {

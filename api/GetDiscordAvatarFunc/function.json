@@ -1,0 +1,28 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get"
+      ],
+      "route": "users/discord/avatar/{token}"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "inputUsers",
+      "databaseName": "gueio",
+      "collectionName": "users",
+      "connectionStringSetting": "AzureWebJobsStorage",
+      "sqlQuery": "SELECT c.discord.id, c.discord.avatar FROM c WHERE c.discord.token={token}"
+    }
+  ]
+}

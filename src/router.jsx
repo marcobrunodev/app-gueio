@@ -17,7 +17,7 @@ const router = createBrowserRouter([{
     element: <Login />
   },
   {
-    path: '@:me',
+    path: '@me',
     loader: loaderRequireAuth,
     element: (
       <RequiredAuth>

@@ -12,8 +12,6 @@ module.exports = async (context, req) => {
     const cookies = req.headers.cookie
     const token = getCookie(cookies, 'discordToken')
 
-    console.log('revoke token', token)
-
     const config = {
       method: 'POST',
       body: new URLSearchParams({
