@@ -12,7 +12,7 @@ const Content = styled.div`
   z-index: 2;
 `
 
-const Button = styled.button`
+export const Button = styled.button`
   position: relative;
   width: calc(100% - 2rem);
   height: 4.5rem;

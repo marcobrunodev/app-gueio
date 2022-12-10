@@ -4,7 +4,8 @@ const getCookie = require('../utils/getCookie')
 const {
   DISCORD_API_URL,
   DISCORD_CLIENT_ID,
-  DISCORD_SECRETY_ID
+  DISCORD_SECRETY_ID,
+  API_URL
 } = process.env
 
 module.exports = async (context, req) => {
@@ -25,6 +26,7 @@ module.exports = async (context, req) => {
     }
 
     await request(`${DISCORD_API_URL}/oauth2/token/revoke`, config)
+    await request(`${API_URL}/users/discord/token/${token}`, { method: 'PUT' })
 
     return {
       status: 200

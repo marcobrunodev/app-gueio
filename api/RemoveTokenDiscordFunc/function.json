@@ -1,0 +1,37 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "put"
+      ],
+      "route": "users/discord/token/{token}"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "in",
+      "name": "inputUsers",
+      "databaseName": "gueio",
+      "collectionName": "users",
+      "connectionStringSetting": "AzureWebJobsStorage",
+      "sqlQuery": "SELECT * FROM c WHERE c.discord.token={token}"
+    },
+    {
+      "type": "cosmosDB",
+      "direction": "out",
+      "name": "outputUsers",
+      "databaseName": "gueio",
+      "collectionName": "users",
+      "createIfNotExists": false,
+      "connectionStringSetting": "AzureWebJobsStorage"
+    }
+  ]
+}
