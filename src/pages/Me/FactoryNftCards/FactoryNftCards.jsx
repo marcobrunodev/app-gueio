@@ -1,5 +1,5 @@
 import { arrayOf, shape, string } from 'prop-types'
-import Card from '../../../layouts/Card'
+import Card from '../../../Layouts/Card'
 
 const FactoryNftCards = ({ nfts }) => (
   <>

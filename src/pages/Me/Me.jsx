@@ -1,6 +1,6 @@
 import { arrayOf, shape, string } from 'prop-types'
 import LogoutButton from '../../components/LogoutButton'
-import HeaderMe from '../../layouts/HeaderMe'
+import HeaderMe from '../../Layouts/HeaderMe'
 import FactoryNftCards from './FactoryNftCards'
 import S from './Me.styles'
 
