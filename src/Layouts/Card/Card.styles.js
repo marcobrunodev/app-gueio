@@ -2,7 +2,9 @@ import styled from 'styled-components'
 import { Button } from '../../components/Button/Button.styles'
 import Description from '../../components/Description'
 
-const Nft = styled.img``
+const Nft = styled.img`
+  width: 100%;
+`
 
 const Card = styled.article`
   display: flex;

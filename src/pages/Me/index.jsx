@@ -2,7 +2,7 @@ import Me from './Me'
 import useMe from './useMe'
 
 export default () => {
-  const { discordAvatar } = useMe()
+  const { discordAvatar, nfts } = useMe()
 
-  return <Me avatar={discordAvatar} />
+  return <Me avatar={discordAvatar} nfts={nfts} />
 }

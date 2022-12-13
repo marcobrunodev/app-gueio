@@ -1,29 +1,26 @@
-import { string } from 'prop-types'
+import { arrayOf, shape, string } from 'prop-types'
 import LogoutButton from '../../components/LogoutButton'
 import HeaderMe from '../../layouts/HeaderMe'
-import Card from '../../layouts/Card'
+import FactoryNftCards from './FactoryNftCards'
 import S from './Me.styles'
 
-const Me = ({ avatar }) => (
+const Me = ({ avatar, nfts }) => (
   <S.Me>
     <HeaderMe avatar={avatar} />
 
-    <Card
-      smartContract="0x56a67d475ded20f1120d6377988ae12992888ac4"
-      cid="1"
-    />
-
-    <Card
-      smartContract="0x56a67d475ded20f1120d6377988ae12992888ac4"
-      cid="1"
-    />
+    <FactoryNftCards nfts={nfts} />
 
     <LogoutButton />
   </S.Me>
 )
 
 Me.propTypes = {
-  avatar: string.isRequired
+  avatar: string.isRequired,
+  nfts: arrayOf(shape({
+    cid: string.isRequired,
+    src: string.isRequired,
+    smartContract: string.isRequired
+  }))
 }
 
 export default Me
