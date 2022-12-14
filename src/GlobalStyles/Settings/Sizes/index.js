@@ -5,6 +5,10 @@ const Sizes = createGlobalStyle`
     --font-size: 10px;
 
     --height-header-me: 5rem;
+
+    @media (min-width: 720px) {
+      --height-header-me: 6rem;
+    }
   }
 `
 

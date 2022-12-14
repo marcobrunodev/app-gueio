@@ -11,14 +11,15 @@ const HeaderMe = styled.header`
   box-sizing: border-box;
   background-color: var(--color-first-light-black);
   border-bottom: 0.1rem var(--color-thid-black) solid;
-  padding: 1rem;
+  padding: .5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 10;
 
   ${Logo} {
-    --size: calc(var(--height-header-me) + 2rem);
+    --size: calc(var(--height-header-me) - 1rem);
+    transform: translateY(-.5rem);
   }
 
   ${IconFilter} {
@@ -27,6 +28,10 @@ const HeaderMe = styled.header`
 
   ${Avatar} {
     height: 90%;
+  }
+
+  @media (min-width: 720px) {
+    padding: 1rem;
   }
 `
 

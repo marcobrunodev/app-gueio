@@ -1,4 +1,5 @@
 import { arrayOf, shape, string } from 'prop-types'
+import ButtonConnectWallet from '../../components/ButtonConnectWallet'
 import LogoutButton from '../../components/LogoutButton'
 import HeaderMe from '../../Layouts/HeaderMe'
 import FactoryNftCards from './FactoryNftCards'
@@ -8,7 +9,7 @@ const Me = ({ avatar, nfts }) => (
   <S.Me>
     <HeaderMe avatar={avatar} />
 
-    <FactoryNftCards nfts={nfts} />
+    {nfts ? <FactoryNftCards nfts={nfts} /> : <ButtonConnectWallet />}
 
     <LogoutButton />
   </S.Me>

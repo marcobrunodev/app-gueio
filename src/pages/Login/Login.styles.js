@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Logo from '../../components/Logo'
 import Title from '../../components/Title'
 
 const Buttons = styled.div`
@@ -16,8 +17,14 @@ const Login = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  padding-top: 2rem;
 
-  ${Title} {
+  & > ${Logo} {
+    --size: 15rem;
+    margin-bottom: 4rem;
+  }
+
+  & > ${Title} {
     margin-bottom: 4rem;
   }
 `

@@ -7,6 +7,7 @@ const Base = createGlobalStyle`
 
   html, body {
     cursor: var(--cursor-auto);
+    min-width: 320px;
   }
 
   body {

@@ -12,14 +12,10 @@ const useMe = () => {
     const getAllNfts = async () => {
       const nftsFromService = await serviceNft.getAll(address)
       setNfts(nftsFromService)
-
-      console.log(nftsFromService)
-      console.log(JSON.parse(nftsFromService[0].metadata))
-      console.log(JSON.parse(nftsFromService[2].metadata))
     }
 
     getAllNfts()
-  }, [])
+  }, [address])
 
   return {
     discordAvatar,

@@ -1,8 +1,9 @@
 import { arrayOf, shape, string } from 'prop-types'
 import Card from '../../../Layouts/Card'
+import S from './FactoryNftCards.styles'
 
 const FactoryNftCards = ({ nfts }) => (
-  <>
+  <S.FactoryNftCards>
     {nfts.map(({ tokenId, image, tokenAddress, description }) => (
       <Card
         key={tokenId + tokenAddress}
@@ -12,7 +13,7 @@ const FactoryNftCards = ({ nfts }) => (
         description={description}
       />)
     )}
-  </>
+  </S.FactoryNftCards>
 )
 
 FactoryNftCards.propTypes = {
