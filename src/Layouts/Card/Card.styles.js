@@ -1,12 +1,24 @@
 import styled from 'styled-components'
 import { Button } from '../../components/Button/Button.styles'
 import Description from '../../components/Description'
+import gueio from '../../assets/images/gueio.gif'
+
+const Loading = styled.img.attrs({ src: gueio })`
+  position: absolute;
+  image-rendering: pixelated;
+  width: 100%;
+  height: 320px;
+`
 
 const Nft = styled.img`
+  position: relative;
+  z-index: 10;
   width: 100%;
+  height: 320px;
 `
 
 const Card = styled.article`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,5 +58,6 @@ const Card = styled.article`
 
 export default {
   Card,
-  Nft
+  Nft,
+  Loading
 }

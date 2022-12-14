@@ -1,11 +1,13 @@
 import { func, string } from 'prop-types'
 import Button from '../../components/Button'
 import Description from '../../components/Description'
+import Logo from '../../components/Logo'
 import S from './Card.styles'
 
-const Card = ({ tokenId, src, tokenAddress, description, onClick }) => (
+const Card = ({ tokenId, src = Logo, tokenAddress, description, onClick }) => (
   <S.Card>
     <S.Nft src={src} />
+    <S.Loading />
 
     <Description>{description}</Description>
 
