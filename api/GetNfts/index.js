@@ -6,9 +6,7 @@ const ipfsToHttps = (url) => /^ipfs:\/\//.test(url) ? `https://ipfs.io/ipfs/${ur
 
 module.exports = async (context, req) => {
   try {
-    context.log('API_KEY_MORALIS', API_KEY_MORALIS)
     const { address } = context.bindingData
-    context.log('address', address)
     const options = {
       method: 'GET',
       url: `https://deep-index.moralis.io/api/v2/${address}/nft`,
