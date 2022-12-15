@@ -15,7 +15,7 @@ const HeaderMe = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 10;
+  z-index: 100;
 
   ${Logo} {
     --size: calc(var(--height-header-me) - 1rem);
